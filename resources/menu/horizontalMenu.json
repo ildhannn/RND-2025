@@ -1,0 +1,64 @@
+{
+    "menu": [
+        {
+            "id": 1,
+            "nama": "Dashboard",
+            "url": "\/",
+            "slug": "page-dashboard",
+            "icon": null,
+            "kewenangan_id": "[\"1\", \"2\", \"3\"]",
+            "status": "1",
+            "kategori": "dashboard",
+            "created_at": "2024-10-21T06:12:25.000000Z",
+            "updated_at": "2024-11-11T09:13:29.000000Z"
+        },
+        {
+            "id": 2,
+            "nama": "Managemen Pengguna",
+            "url": "\/user",
+            "slug": "page-user",
+            "icon": null,
+            "kewenangan_id": "[\"1\"]",
+            "status": "1",
+            "kategori": "user",
+            "created_at": "2024-10-21T06:44:12.000000Z",
+            "updated_at": "2024-11-18T02:21:14.000000Z"
+        },
+        {
+            "id": 9,
+            "nama": "Managemen Menu",
+            "url": "\/menu",
+            "slug": "page-menu",
+            "icon": null,
+            "kewenangan_id": "[\"1\"]",
+            "status": "1",
+            "kategori": "menu",
+            "created_at": "2024-11-08T06:10:39.000000Z",
+            "updated_at": "2024-11-08T06:10:39.000000Z"
+        },
+        {
+            "id": 12,
+            "nama": "Log Aktifitas",
+            "url": "\/log",
+            "slug": "page-log",
+            "icon": null,
+            "kewenangan_id": "[\"1\", \"2\", \"3\"]",
+            "status": "1",
+            "kategori": "log",
+            "created_at": "2024-11-08T08:28:19.000000Z",
+            "updated_at": "2024-11-11T06:37:43.000000Z"
+        },
+        {
+            "id": 14,
+            "nama": "Pengaturan",
+            "url": "\/pengaturan",
+            "slug": "page-pengaturan",
+            "icon": null,
+            "kewenangan_id": "[\"1\"]",
+            "status": "1",
+            "kategori": "pengaturan",
+            "created_at": "2024-11-11T08:26:37.000000Z",
+            "updated_at": "2024-11-11T08:26:37.000000Z"
+        }
+    ]
+}

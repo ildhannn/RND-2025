@@ -1,0 +1,34 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashhboard",
+      "icon": "menu-icon tf-icons mdi mdi-home-outline",
+      "slug": "page-home"
+    },
+    {
+      "url": "/user",
+      "icon": "menu-icon tf-icons mdi mdi-account-supervisor",
+      "name": "Managemen User",
+      "slug": "page-user"
+    },
+    {
+      "url": "/log",
+      "name": "Log Aktifitas",
+      "icon": "menu-icon tf-icons mdi mdi-math-log",
+      "slug": "page-log"
+    },
+    {
+      "url": "/menu",
+      "name": "Mangement Menu",
+      "icon": "menu-icon tf-icons mdi mdi-menu",
+      "slug": "page-menu"
+    },
+    {
+      "url": "/pengaturan",
+      "name": "Pengaturan",
+      "icon": "menu-icon tf-icons mdi mdi-cog",
+      "slug": "page-pengaturan"
+    }
+  ]
+}
