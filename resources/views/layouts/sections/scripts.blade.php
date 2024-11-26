@@ -27,6 +27,8 @@
 {{-- custome js --}}
 <script src="{{ asset(mix('js/app.js')) }}"></script>
 
+{{-- dashboard --}}
+@yield('page-dashboard-script')
 
 {{-- Table --}}
 @yield('page-table-script')

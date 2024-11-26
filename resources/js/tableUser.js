@@ -117,7 +117,9 @@ const TableUser = ({ data, totalItems }) => {
           ) : (
             <tbody>
               <tr>
-                <td colSpan='6'>Data Tidak Ada</td>
+                <td colSpan='6' className='text-center'>
+                  Data Tidak Ada
+                </td>
               </tr>
             </tbody>
           )}
