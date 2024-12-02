@@ -14,30 +14,103 @@
 
 
 @section('content')
-    <div class="col-12 mb-4">
+    <div class="col-md-6 col-12 mb-4">
         <div class="card">
-            <div class="card-header d-flex justify-content-between">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
-                    <h5 class="card-title mb-0">Balance</h5>
-                    <small class="text-muted">Commercial networks & enterprises</small>
+                    <p class="card-subtitle text-muted mb-1">Aktifitas Terakhir</p>
                 </div>
-                <div class="d-sm-flex d-none align-items-center">
-                    <h5 class="mb-0 me-3">$ 100,000</h5>
-                    <span class="badge bg-label-secondary rounded-pill">
-                        <i class='mdi mdi-arrow-down mdi-14px text-danger'></i>
-                        <span class="align-middle">20%</span>
-                    </span>
+                <div class="dropdown">
+                    <button type="button" class="btn dropdown-toggle px-0" data-bs-toggle="dropdown" aria-expanded="false"><i
+                            class="mdi mdi-calendar-month-outline"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Hari ini</a></li>
+                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Kemarin</a></li>
+                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">1 Minggu Terakhir</a>
+                        </li>
+                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">1 Bulan Terakhir</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Bulan Sekarang</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="card-body">
-                <div id="lineChart"></div>
+                <div id="dahsboard"></div>
             </div>
         </div>
     </div>
 @endsection
 
-
 @section('page-dashboard-script')
-    <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-    <script src="{{ asset('assets/js/charts-apex.js') }}"></script>
+    <script>
+        const horizontalBarChartEl = document.querySelector('#dahsboard'),
+            horizontalBarChartConfig = {
+                chart: {
+                    height: 400,
+                    fontFamily: 'Inter',
+                    type: 'bar',
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: true,
+                        barHeight: '30%',
+                        startingShape: 'rounded',
+                        borderRadius: 8
+                    }
+                },
+                grid: {
+                    borderColor: config.colors.borderColor,
+                    xaxis: {
+                        lines: {
+                            show: false
+                        }
+                    },
+                    padding: {
+                        top: -20,
+                        bottom: -12
+                    }
+                },
+                colors: '#C2C2C2',
+                dataLabels: {
+                    enabled: false
+                },
+                series: [{
+                    data: [10, 5, 5, 2]
+                }],
+                xaxis: {
+                    categories: ['Login', 'Update Pengguna', 'Update Pengaturan', 'Update Menu'],
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false
+                    },
+                    labels: {
+                        style: {
+                            colors: config.colors.textMuted,
+                            fontSize: '11px'
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            colors: config.colors.textMuted,
+                            fontSize: '11px'
+                        }
+                    }
+                }
+            };
+        if (typeof horizontalBarChartEl !== undefined && horizontalBarChartEl !== null) {
+            const horizontalBarChart = new ApexCharts(horizontalBarChartEl, horizontalBarChartConfig);
+            horizontalBarChart.render();
+        }
+    </script>
 @endsection
