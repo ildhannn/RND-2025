@@ -8,8 +8,10 @@
 <script src="{{ asset(mix('assets/vendor/libs/typeahead-js/typeahead.js')) }}"></script>
 <script src="{{ asset(mix('assets/vendor/js/menu.js')) }}"></script>
 <script src="assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
 <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 <script src="{{ asset('assets/js/charts-apex.js') }}"></script>
+
 @yield('vendor-script')
 <!-- END: Page Vendor JS-->
 
@@ -38,6 +40,7 @@
 {{-- Pengaturan --}}
 @yield('page-footer-script')
 @yield('page-favico-script')
+@yield('page-settingFR-script')
 
 {{-- FR --}}
 @yield('page-fr-script')

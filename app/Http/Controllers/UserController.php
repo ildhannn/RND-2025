@@ -10,12 +10,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $url = api_url('getAllUser');
+        $url2 = api_exadel('subjects');
+        $url3 = api_url('getAllKewenangan');
+        $url4 = api_url('getFR/' . $request->id_user);
+
         $res = requestGetAPI($url);
+        $res2 = requestGetAPIExadel($url2);
+        $res3 = requestGetAPI($url3);
 
         $user = [];
+        $user['face'] = $res2->subjects;
+        $user['namaKewenangan'] = array_column($res3->data, 'nama');
 
         if ($res->status === 200) {
             $user['users'] = $res->data->users;
@@ -26,13 +34,9 @@ class UserController extends Controller
             Alert::success('Error', $res->message);
         }
 
-        // untuk cek subject exadel di view
-        $client = new Client();
-        $url2 = api_exadel('subjects');
-        $res2 = requestGetAPIExadel($url2);
-        $user['face'] = $res2->subjects;
+        // dd($user);
 
-        return view('user.index2', compact('user'));
+        return view('user.index', compact('user'));
     }
 
     public function fetchUser()
@@ -53,7 +57,7 @@ class UserController extends Controller
 
     public function createUser()
     {
-        return view('user.create2');
+        return view('user.create');
     }
 
     public function postCreate(Request $request)

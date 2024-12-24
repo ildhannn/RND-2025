@@ -396,6 +396,9 @@
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($menu['pengaturan'] as $item)
+                                                                    @if ($item->parent_id == null)
+                                                                        kosong
+                                                                    @endif
                                                                     <tr>
                                                                         <td>{{ $loop->iteration }}</td>
                                                                         <td>{{ $item->nama }}</td>

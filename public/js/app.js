@@ -274,7 +274,6 @@ var TableUser = function TableUser(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tr", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               colSpan: "6",
-              className: "text-center",
               children: "Data Tidak Ada"
             })
           })

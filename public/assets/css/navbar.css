@@ -1,35 +1,35 @@
 .brutal-nav {
-border-bottom: 2px dotted #626262;
-font-family: "Doto";
-color: white;
-position: relative;
-padding-top: 0.25rem;
-padding-bottom: 0.2rem;
-height: 4rem;
--ms-flex-wrap: nowrap;
-flex-wrap: nowrap;
-z-index: 2;
+  /* border-bottom: 2px dotted #626262; */
+  font-family: 'Doto';
+  color: white;
+  position: relative;
+  padding-top: 0.25rem;
+  padding-bottom: 0.2rem;
+  height: 4rem;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  z-index: 2;
 }
 
 .brutal-menu {
-border-bottom: 2px dotted #626262;
--ms-flex-direction: row;
-flex-direction: row;
-width: 100%;
+  /* border-bottom: 2px dotted #626262; */
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
 }
 
 .brutal-btn {
-border: 2px dotted #626262;
-font-family: "Doto";
-letter-spacing: 1px;
-color: white;
+  /* border: 2px dotted #626262; */
+  font-family: 'Doto';
+  letter-spacing: 1px;
+  color: white;
 }
 
 .brutal-profile {
-font-family: "Doto";
+  font-family: 'Doto';
 }
 
 .brutal-avatar {
-  border: 2px dotted #626262;
+  /* border: 2px dotted #626262; */
   border-radius: 50%;
 }

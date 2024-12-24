@@ -91,6 +91,7 @@
         function recognizeFace() {
             const apiKey = 'eef6c78b-c094-4413-b3da-9a911f4726ee';
             const file = document.getElementById("getfr");
+            const path = '{{ url('setting_fr') }}';
 
             if (file.files.length === 0) {
                 Swal.fire({
@@ -107,68 +108,84 @@
             let formData = new FormData();
             formData.append("file", photo);
 
-            const limit = 10;
-            const predictionCount = 5;
-            const detectionProbabilityThreshold = 0.6;
-
-            const baseUrl = 'http://localhost:8002/api/v1/recognition/recognize';
-            const url = `${baseUrl}?limit=${limit}&prediction_count=${predictionCount}&det_prob_threshold=${detectionProbabilityThreshold}`;
-            fetch(url, {
-                    method: "POST",
-                    headers: {
-                        "x-api-key": apiKey
-                    },
-                    body: formData
+            fetch(path)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('Terjadi kesalahan' + res.statusText);
+                    }
+                    return res.json();
                 })
-                .then(r => r.json())
                 .then(data => {
-                    const treshold = 0.99;
-                    const loggedInUser = "{{ Session::get('username') }}";
+                    let setting = data[0];
+                    let threshold = setting.threshold
 
-                    let recognizedRoles = [];
+                    const limit = 10;
+                    const predictionCount = Number(setting.prediction);
+                    const detectionProbabilityThreshold = threshold;
 
-                    if (data.result && data.result.length > 0) {
-                        data.result.forEach(result => {
-                            if (result.subjects && result.subjects.length > 0) {
-                                result.subjects.forEach(subject => {
-                                    if (subject.similarity >= treshold) {
-                                        recognizedRoles.push(subject.subject);
+                    const baseUrl = 'http://localhost:8002/api/v1/recognition/recognize';
+                    const url =
+                        `${baseUrl}?limit=${limit}&prediction_count=${predictionCount}&det_prob_threshold=${detectionProbabilityThreshold}`;
+                    fetch(url, {
+                            method: "POST",
+                            headers: {
+                                "x-api-key": apiKey
+                            },
+                            body: formData
+                        })
+                        .then(r => r.json())
+                        .then(data => {
+                            const treshold = 0.99;
+                            const loggedInUser = "{{ Session::get('username') }}";
+
+                            let recognizedRoles = [];
+
+                            if (data.result && data.result.length > 0) {
+                                data.result.forEach(result => {
+                                    if (result.subjects && result.subjects.length > 0) {
+                                        result.subjects.forEach(subject => {
+                                            if (subject.similarity >= treshold) {
+                                                recognizedRoles.push(subject.subject);
+                                            }
+                                        });
                                     }
                                 });
-                            }
-                        });
 
-                        if (recognizedRoles.includes(loggedInUser)) {
+                                if (recognizedRoles.includes(loggedInUser)) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: `Selamat datang, ${loggedInUser }!`,
+                                        icon: 'success',
+                                    });
+                                    setTimeout(() => {
+                                        window.location.href = "{{ url('/') }}";
+                                    }, 1000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Gagal!',
+                                        text: 'Wajah tidak cocok.',
+                                        icon: 'error',
+                                    });
+                                }
+                            } else {
+                                Swal.fire({
+                                    title: 'Gagal!',
+                                    text: 'Wajah tidak terdeteksi.',
+                                    icon: 'error',
+                                });
+                            }
+                        })
+                        .catch(error => {
                             Swal.fire({
-                                title: 'Success!',
-                                text: `Selamat datang, ${loggedInUser }!`,
-                                icon: 'success',
-                            });
-                            setTimeout(() => {
-                                window.location.href = "{{ url('/') }}";
-                            }, 1000);
-                        } else {
-                            Swal.fire({
-                                title: 'Gagal!',
-                                text: 'Wajah tidak cocok.',
+                                title: 'Oops!',
+                                text: 'Terjadi kesalahan dalam proses verifikasi wajah.',
                                 icon: 'error',
                             });
-                        }
-                    } else {
-                        Swal.fire({
-                            title: 'Gagal!',
-                            text: 'Wajah tidak terdeteksi.',
-                            icon: 'error',
+                            console.error('Error:', error);
                         });
-                    }
                 })
                 .catch(error => {
-                    Swal.fire({
-                        title: 'Oops!',
-                        text: 'Terjadi kesalahan dalam proses verifikasi wajah.',
-                        icon: 'error',
-                    });
-                    console.error('Error:', error);
+                    console.error('There was a problem with the fetch operation:', error);
                 });
         }
     </script>

@@ -9,6 +9,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index2');
+        $url = api_url('logDashboard');
+        $res = requestGetAPI($url)->data;
+
+        return view('dashboard.index', compact('res'));
     }
 }

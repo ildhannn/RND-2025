@@ -33,10 +33,14 @@
                                         <option selected disabled>Pilih kategori</option>
                                         <option value="dashboard" {{ $res->kategori == 'dashboard' ? 'selected' : '' }}>
                                             Dashboard</option>
-                                        <option value="user" {{ $res->kategori == 'user' ? 'selected' : '' }}>Management
-                                            Pengguna</option>
-                                        <option value="log" {{ $res->kategori == 'log' ? 'selected' : '' }}>Log Aktifitas
-                                        </option>
+                                        <option value="user" {{ $res->kategori == 'user' ? 'selected' : '' }}>
+                                            Management User</option>
+                                        <option value="menu" {{ $res->kategori == 'menu' ? 'selected' : '' }}>
+                                            Management Menu</option>
+                                        <option value="log" {{ $res->kategori == 'log' ? 'selected' : '' }}>Log
+                                            Aktifitas</option>
+                                        <option value="pengaturan" {{ $res->kategori == 'pengaturan' ? 'selected' : '' }}>
+                                            Pengaturan</option>
                                     </select>
                                     <label for="basic-icon-default-route">Kategori</label>
                                 </div>
@@ -126,6 +130,26 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-6 mt-4">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-nama" class="input-group-text"><i
+                                        class="mdi mdi-list-status"></i></span>
+                                <div class="form-floating form-floating-outline">
+                                    <select class="form-select form-select-md" name="parent_id"
+                                        value="{{ $res->parent_id }}">
+                                        <option selected disabled>Pilih Parent Menu</option>
+                                        @foreach ($parentMenu as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ $res->parent_id == $item->id ? 'selected' : '' }}>{{ $item->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <label for="basic-icon-default-route">Sub Menu</label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     {{-- New Kewenangan --}}
@@ -138,7 +162,8 @@
                                         <div class="row">
                                             <div class="col-md mb-md-0 mb-2">
                                                 <div class="form-check custom-option custom-option-icon">
-                                                    <label class="form-check-label custom-option-content" for="superadmin">
+                                                    <label class="form-check-label custom-option-content"
+                                                        for="superadmin">
                                                         <span class="custom-option-body">
                                                             <i class="mdi mdi-laptop"></i>
                                                             <span class="custom-option-title"> Superadmin </span>

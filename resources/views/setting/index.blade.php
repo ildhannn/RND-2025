@@ -65,7 +65,7 @@
                             <img src="{{ $res->url_favico }}" alt="favico" width="100" height="auto">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Ubah</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>

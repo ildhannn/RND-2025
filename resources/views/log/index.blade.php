@@ -16,8 +16,10 @@
                             <th>No.</th>
                             <th>Pengguna</th>
                             <th>Aktifitas</th>
-                            <th>IP</th>
-                            {{-- <th>Browser</th> --}}
+                            <th>IP Private</th>
+                            <th>IP Public</th>
+                            <th>Host</th>
+                            <th>Info Lebih</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,8 +28,64 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->user }}</td>
                                 <td>{{ $item->nama_aktifitas }}</td>
-                                <td>{{ $item->ip }}</td>
-                                {{-- <td>{{ $item->browser }}</td> --}}
+                                <td>{{ $item->ip_private }}</td>
+                                <td>{{ $item->ip_public }}</td>
+                                <td>{{ $item->host }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#detailLain">
+                                        Detail Lainnya
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="detailLain" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="detailLain">WAKTU AKSES : {{ \Carbon\Carbon::parse($item->created_at)->format('d-M-Y / H:i:s A') }}</h4>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table>
+                                                        <tr>
+                                                          <div class="col">
+                                                            <th>User Agent</th>
+                                                            <th>: </th>
+                                                            <td>{{ $item->user_agent }}</td>
+                                                          </div>
+                                                        </tr>
+                                                        <tr>
+                                                          <div class="col">
+                                                            <th>Browser</th>
+                                                            <th>: </th>
+                                                            <td>{{ $item->browser }}</td>
+                                                          </div>
+                                                        </tr>
+                                                        <tr>
+                                                          <div class="col">
+                                                            <th>Perangkat</th>
+                                                            <th>: </th>
+                                                            <td>{{ $item->bot }}</td>
+                                                          </div>
+                                                        </tr>
+                                                        <tr>
+                                                          <div class="col">
+                                                            <th>Akses lewat web/mobile</th>
+                                                            <th>: </th>
+                                                            <td>{{ $item->inapp === false ? 'TIDAL' : 'YA' }}</td>
+                                                          </div>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

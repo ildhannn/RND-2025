@@ -11,12 +11,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        // $checkToken = Session::get('token');
-        // if ($checkToken) {
-        //     return redirect()->back();
-        // }
-
-        return view('auth.login2');
+        return view('auth.login');
     }
 
     public function login(Request $request)
@@ -66,10 +61,10 @@ class AuthController extends Controller
         return view('auth.facerecog2');
     }
 
-    public function registFR()
-    {
-        return view('auth.regis_fr2');
-    }
+    // public function registFR()
+    // {
+    //     return view('auth.regis_fr2');
+    // }
 
     public function registFR2($id)
     {
@@ -79,13 +74,34 @@ class AuthController extends Controller
         return view('auth.regis_fr2', compact('user'));
     }
 
-    public function postRegis(Request $request, $id)
+    // face api
+    // public function postRegis(Request $request, $id)
+    // {
+    //     $url = api_url('regisFR/' . $id);
+
+    //     $post = [
+    //         'id_user' => $id,
+    //         'descriptors' => json_encode($request->input('descriptors')),
+    //     ];
+
+    //     $res = requestPostAPI($url, $post);
+
+    //     if ($res->status == 200) {
+    //         Alert::success('Success', $res->message);
+    //         return redirect()->route('page-fr');
+    //     } else {
+    //         Alert::error('Error', $res->message);
+    //         return redirect()->route('page-fr');
+    //     }
+    // }
+
+    // exalde
+    public function postRegis($id)
     {
         $url = api_url('regisFR/' . $id);
 
         $post = [
             'id_user' => $id,
-            'descriptors' => json_encode($request->input('descriptors')),
         ];
 
         $res = requestPostAPI($url, $post);

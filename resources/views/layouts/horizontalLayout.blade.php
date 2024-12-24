@@ -36,8 +36,8 @@ $containerNav = ($configData['contentLayout'] === 'compact') ? 'container-xxl' :
 
     <!-- BEGIN: Navbar-->
     @if ($isNavbar)
-    {{-- @include('layouts/sections/navbar/navbar') --}}
-    @include('layouts/sections/navbar/navbar2')
+    @include('layouts/sections/navbar/navbar')
+    {{-- @include('layouts/sections/navbar/navbar2') --}}
     @endif
     <!-- END: Navbar-->
 

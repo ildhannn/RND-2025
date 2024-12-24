@@ -4,7 +4,8 @@
 
 @section('content')
 
-    <div class="card" style="margin-top: 80px;">
+    {{-- <div class="card" style="margin-top: 80px;"> --}}
+    <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
@@ -44,6 +45,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        // update db
+        // $(document).ready(function() {
+
+        // });
+        // end update db
+
         Webcam.set({
             width: 500,
             height: 390,
@@ -106,7 +113,7 @@
             const formData = new FormData();
             formData.append("file", photo);
 
-            const subject = "{{ Session::get('username') }}";
+            const subject = "{{ $user->username }}";
 
             // Send the request
             fetch('http://localhost:8002/api/v1/recognition/faces/?subject=' + encodeURIComponent(subject), {
@@ -118,11 +125,37 @@
                 })
                 .then(r => {
                     if (!r.ok) {
-                        throw new Error('Terjadi kesalahan' + r.statusText);
+                        throw new Error('Terjadi kesalahan 2' + r.statusText);
                     }
                     return r.json();
                 })
                 .then(function(data) {
+
+                    let id = "{{ $user->id }}";
+                    let url = "{{ url('/registrasi_fr') }}" + "/" + id;
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer {{ Session::get('token') }}'
+                        },
+                        body: JSON.stringify({
+                            id_user: id,
+                        }),
+                    }).then(res => {
+                        if (!res.ok) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Terjadi kesalahan 1 ' + errorText,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    });
+
                     Swal.fire({
                         title: 'Success!',
                         text: 'Registrasi wajah berhasil',

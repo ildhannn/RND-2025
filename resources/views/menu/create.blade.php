@@ -46,6 +46,21 @@
                         <div class="col-md-6 mt-4">
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-nama" class="input-group-text"><i
+                                        class="mdi mdi-list-status"></i></span>
+                                <div class="form-floating form-floating-outline">
+                                    <select class="form-select form-select-md" name="parent_id">
+                                        <option selected disabled>Pilih Parent Menu</option>
+                                        @foreach ($parentMenu as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    <label for="basic-icon-default-route">Sub Menu</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-nama" class="input-group-text"><i
                                         class="mdi mdi-menu"></i></span>
                                 <div class="form-floating form-floating-outline">
                                     <input type="text" class="form-control" id="basic-icon-default-nama"
@@ -88,7 +103,10 @@
                                 </div>
                             </div>
                         </div> --}}
-                        <div class="col-md mt-4">
+
+
+                        {{-- new input icon --}}
+                        {{-- <div class="col-md mt-4">
                             <div class="card card-action mb-4">
                                 <div class="card-header">
                                     <div class="card-action-title">Pilih Icon</div>
@@ -114,7 +132,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <button type="submit" class="btn btn-primary">Buat</button>
                 </form>
@@ -132,7 +150,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const iconsContainer = document.getElementById(
-                    'icons-container');
+                        'icons-container');
 
                     iconsContainer.innerHTML = '';
                     data.forEach(item => {

@@ -1,28 +1,44 @@
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(self, function() {
+return /******/ (function() { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+/*!***************************************************!*\
+  !*** ./resources/assets/vendor/js/charts-apex.js ***!
+  \***************************************************/
 /**
  * Charts Apex
  */
 
-'use strict';
 
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 (function () {
-  let cardColor, headingColor, labelColor, borderColor, legendColor;
-
-  // if (isDarkStyle) {
-  //   cardColor = config.colors_dark.cardColor;
-  //   headingColor = config.colors_dark.headingColor;
-  //   labelColor = config.colors_dark.textMuted;
-  //   legendColor = config.colors_dark.bodyColor;
-  //   borderColor = config.colors_dark.borderColor;
-  // } else {
-  cardColor = config.colors.cardColor;
-  headingColor = config.colors.headingColor;
-  labelColor = config.colors.textMuted;
-  legendColor = config.colors.bodyColor;
-  borderColor = config.colors.borderColor;
-  // }
+  var cardColor, headingColor, labelColor, borderColor, legendColor;
+  if (isDarkStyle) {
+    cardColor = config.colors_dark.cardColor;
+    headingColor = config.colors_dark.headingColor;
+    labelColor = config.colors_dark.textMuted;
+    legendColor = config.colors_dark.bodyColor;
+    borderColor = config.colors_dark.borderColor;
+  } else {
+    cardColor = config.colors.cardColor;
+    headingColor = config.colors.headingColor;
+    labelColor = config.colors.textMuted;
+    legendColor = config.colors.bodyColor;
+    borderColor = config.colors.borderColor;
+  }
 
   // Color constant
-  const chartColors = {
+  var chartColors = {
     column: {
       series1: '#826af9',
       series2: '#d2b0ff',
@@ -44,12 +60,11 @@
 
   // Heat chart data generator
   function generateDataHeat(count, yrange) {
-    let i = 0;
-    let series = [];
+    var i = 0;
+    var series = [];
     while (i < count) {
-      let x = 'w' + (i + 1).toString();
-      let y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-
+      var x = 'w' + (i + 1).toString();
+      var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
       series.push({
         x: x,
         y: y
@@ -61,7 +76,7 @@
 
   // Line Area Chart
   // --------------------------------------------------------------------
-  const areaChartEl = document.querySelector('#lineAreaChart'),
+  var areaChartEl = document.querySelector('#lineAreaChart'),
     areaChartConfig = {
       chart: {
         height: 400,
@@ -97,37 +112,18 @@
         }
       },
       colors: [chartColors.area.series3, chartColors.area.series2, chartColors.area.series1],
-      series: [
-        {
-          name: 'Visits',
-          data: [100, 120, 90, 170, 130, 160, 140, 240, 220, 180, 270, 280, 375]
-        },
-        {
-          name: 'Clicks',
-          data: [60, 80, 70, 110, 80, 100, 90, 180, 160, 140, 200, 220, 275]
-        },
-        {
-          name: 'Sales',
-          data: [20, 40, 30, 70, 40, 60, 50, 140, 120, 100, 140, 180, 220]
-        }
-      ],
+      series: [{
+        name: 'Visits',
+        data: [100, 120, 90, 170, 130, 160, 140, 240, 220, 180, 270, 280, 375]
+      }, {
+        name: 'Clicks',
+        data: [60, 80, 70, 110, 80, 100, 90, 180, 160, 140, 200, 220, 275]
+      }, {
+        name: 'Sales',
+        data: [20, 40, 30, 70, 40, 60, 50, 140, 120, 100, 140, 180, 220]
+      }],
       xaxis: {
-        categories: [
-          '7/12',
-          '8/12',
-          '9/12',
-          '10/12',
-          '11/12',
-          '12/12',
-          '13/12',
-          '14/12',
-          '15/12',
-          '16/12',
-          '17/12',
-          '18/12',
-          '19/12',
-          '20/12'
-        ],
+        categories: ['7/12', '8/12', '9/12', '10/12', '11/12', '12/12', '13/12', '14/12', '15/12', '16/12', '17/12', '18/12', '19/12', '20/12'],
         axisBorder: {
           show: false
         },
@@ -157,14 +153,14 @@
         shared: false
       }
     };
-  if (typeof areaChartEl !== undefined && areaChartEl !== null) {
-    const areaChart = new ApexCharts(areaChartEl, areaChartConfig);
+  if (_typeof(areaChartEl) !== undefined && areaChartEl !== null) {
+    var areaChart = new ApexCharts(areaChartEl, areaChartConfig);
     areaChart.render();
   }
 
   // Bar Chart
   // --------------------------------------------------------------------
-  const barChartEl = document.querySelector('#barChart'),
+  var barChartEl = document.querySelector('#barChart'),
     barChartConfig = {
       chart: {
         height: 400,
@@ -180,13 +176,7 @@
         bar: {
           columnWidth: '15%',
           colors: {
-            backgroundBarColors: [
-              chartColors.column.bg,
-              chartColors.column.bg,
-              chartColors.column.bg,
-              chartColors.column.bg,
-              chartColors.column.bg
-            ],
+            backgroundBarColors: [chartColors.column.bg, chartColors.column.bg, chartColors.column.bg, chartColors.column.bg, chartColors.column.bg],
             backgroundBarRadius: 10
           }
         }
@@ -216,16 +206,13 @@
           }
         }
       },
-      series: [
-        {
-          name: 'Apple',
-          data: [90, 120, 55, 100, 80, 125, 175, 70, 88, 180]
-        },
-        {
-          name: 'Samsung',
-          data: [85, 100, 30, 40, 95, 90, 30, 110, 62, 20]
-        }
-      ],
+      series: [{
+        name: 'Apple',
+        data: [90, 120, 55, 100, 80, 125, 175, 70, 88, 180]
+      }, {
+        name: 'Samsung',
+        data: [85, 100, 30, 40, 95, 90, 30, 110, 62, 20]
+      }],
       xaxis: {
         categories: ['7/12', '8/12', '9/12', '10/12', '11/12', '12/12', '13/12', '14/12', '15/12', '16/12'],
         axisBorder: {
@@ -253,14 +240,14 @@
         opacity: 1
       }
     };
-  if (typeof barChartEl !== undefined && barChartEl !== null) {
-    const barChart = new ApexCharts(barChartEl, barChartConfig);
+  if (_typeof(barChartEl) !== undefined && barChartEl !== null) {
+    var barChart = new ApexCharts(barChartEl, barChartConfig);
     barChart.render();
   }
 
   // Scatter Chart
   // --------------------------------------------------------------------
-  const scatterChartEl = document.querySelector('#scatterChart'),
+  var scatterChartEl = document.querySelector('#scatterChart'),
     scatterChartConfig = {
       chart: {
         height: 400,
@@ -293,62 +280,16 @@
         }
       },
       colors: [config.colors.warning, config.colors.primary, config.colors.success],
-      series: [
-        {
-          name: 'Angular',
-          data: [
-            [5.4, 170],
-            [5.4, 100],
-            [5.7, 110],
-            [5.9, 150],
-            [6.0, 200],
-            [6.3, 170],
-            [5.7, 140],
-            [5.9, 130],
-            [7.0, 150],
-            [8.0, 120],
-            [9.0, 170],
-            [10.0, 190],
-            [11.0, 220],
-            [12.0, 170],
-            [13.0, 230]
-          ]
-        },
-        {
-          name: 'Vue',
-          data: [
-            [14.0, 220],
-            [15.0, 280],
-            [16.0, 230],
-            [18.0, 320],
-            [17.5, 280],
-            [19.0, 250],
-            [20.0, 350],
-            [20.5, 320],
-            [20.0, 320],
-            [19.0, 280],
-            [17.0, 280],
-            [22.0, 300],
-            [18.0, 120]
-          ]
-        },
-        {
-          name: 'React',
-          data: [
-            [14.0, 290],
-            [13.0, 190],
-            [20.0, 220],
-            [21.0, 350],
-            [21.5, 290],
-            [22.0, 220],
-            [23.0, 140],
-            [19.0, 400],
-            [20.0, 200],
-            [22.0, 90],
-            [20.0, 120]
-          ]
-        }
-      ],
+      series: [{
+        name: 'Angular',
+        data: [[5.4, 170], [5.4, 100], [5.7, 110], [5.9, 150], [6.0, 200], [6.3, 170], [5.7, 140], [5.9, 130], [7.0, 150], [8.0, 120], [9.0, 170], [10.0, 190], [11.0, 220], [12.0, 170], [13.0, 230]]
+      }, {
+        name: 'Vue',
+        data: [[14.0, 220], [15.0, 280], [16.0, 230], [18.0, 320], [17.5, 280], [19.0, 250], [20.0, 350], [20.5, 320], [20.0, 320], [19.0, 280], [17.0, 280], [22.0, 300], [18.0, 120]]
+      }, {
+        name: 'React',
+        data: [[14.0, 290], [13.0, 190], [20.0, 220], [21.0, 350], [21.5, 290], [22.0, 220], [23.0, 140], [19.0, 400], [20.0, 200], [22.0, 90], [20.0, 120]]
+      }],
       xaxis: {
         tickAmount: 10,
         axisBorder: {
@@ -358,7 +299,7 @@
           show: false
         },
         labels: {
-          formatter: function (val) {
+          formatter: function formatter(val) {
             return parseFloat(val).toFixed(1);
           },
           style: {
@@ -376,14 +317,14 @@
         }
       }
     };
-  if (typeof scatterChartEl !== undefined && scatterChartEl !== null) {
-    const scatterChart = new ApexCharts(scatterChartEl, scatterChartConfig);
+  if (_typeof(scatterChartEl) !== undefined && scatterChartEl !== null) {
+    var scatterChart = new ApexCharts(scatterChartEl, scatterChartConfig);
     scatterChart.render();
   }
 
   // Line Chart
   // --------------------------------------------------------------------
-  const lineChartEl = document.querySelector('#lineChart'),
+  var lineChartEl = document.querySelector('#lineChart'),
     lineChartConfig = {
       chart: {
         height: 400,
@@ -397,11 +338,9 @@
           show: false
         }
       },
-      series: [
-        {
-          data: [280, 200, 220, 180, 270, 250, 70, 90, 200, 150, 160, 100, 150, 100, 50]
-        }
-      ],
+      series: [{
+        data: [280, 200, 220, 180, 270, 250, 70, 90, 200, 150, 160, 100, 150, 100, 50]
+      }],
       markers: {
         strokeWidth: 7,
         strokeOpacity: 1,
@@ -427,28 +366,16 @@
         }
       },
       tooltip: {
-        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+        custom: function custom(_ref) {
+          var series = _ref.series,
+            seriesIndex = _ref.seriesIndex,
+            dataPointIndex = _ref.dataPointIndex,
+            w = _ref.w;
           return '<div class="px-3 py-2">' + '<span>' + series[seriesIndex][dataPointIndex] + '%</span>' + '</div>';
         }
       },
       xaxis: {
-        categories: [
-          '7/12',
-          '8/12',
-          '9/12',
-          '10/12',
-          '11/12',
-          '12/12',
-          '13/12',
-          '14/12',
-          '15/12',
-          '16/12',
-          '17/12',
-          '18/12',
-          '19/12',
-          '20/12',
-          '21/12'
-        ],
+        categories: ['7/12', '8/12', '9/12', '10/12', '11/12', '12/12', '13/12', '14/12', '15/12', '16/12', '17/12', '18/12', '19/12', '20/12', '21/12'],
         axisBorder: {
           show: false
         },
@@ -471,14 +398,14 @@
         }
       }
     };
-  if (typeof lineChartEl !== undefined && lineChartEl !== null) {
-    const lineChart = new ApexCharts(lineChartEl, lineChartConfig);
+  if (_typeof(lineChartEl) !== undefined && lineChartEl !== null) {
+    var lineChart = new ApexCharts(lineChartEl, lineChartConfig);
     lineChart.render();
   }
 
   // Horizontal Bar Chart
   // --------------------------------------------------------------------
-  const horizontalBarChartEl = document.querySelector('#horizontalBarChart'),
+  var horizontalBarChartEl = document.querySelector('#horizontalBarChart'),
     horizontalBarChartConfig = {
       chart: {
         height: 400,
@@ -512,11 +439,9 @@
       dataLabels: {
         enabled: false
       },
-      series: [
-        {
-          data: [700, 350, 480, 600, 210, 550, 150]
-        }
-      ],
+      series: [{
+        data: [700, 350, 480, 600, 210, 550, 150]
+      }],
       xaxis: {
         categories: ['MON, 11', 'THU, 14', 'FRI, 15', 'MON, 18', 'WED, 20', 'FRI, 21', 'MON, 23'],
         axisBorder: {
@@ -541,14 +466,14 @@
         }
       }
     };
-  if (typeof horizontalBarChartEl !== undefined && horizontalBarChartEl !== null) {
-    const horizontalBarChart = new ApexCharts(horizontalBarChartEl, horizontalBarChartConfig);
+  if (_typeof(horizontalBarChartEl) !== undefined && horizontalBarChartEl !== null) {
+    var horizontalBarChart = new ApexCharts(horizontalBarChartEl, horizontalBarChartConfig);
     horizontalBarChart.render();
   }
 
   // Candlestick Chart
   // --------------------------------------------------------------------
-  const candlestickEl = document.querySelector('#candleStickChart'),
+  var candlestickEl = document.querySelector('#candleStickChart'),
     candlestickColors = {
       series1: '#28c76f',
       series2: '#ea5455'
@@ -563,68 +488,51 @@
           show: false
         }
       },
-      series: [
-        {
-          data: [
-            {
-              x: new Date(1538778600000),
-              y: [150, 170, 50, 100]
-            },
-            {
-              x: new Date(1538780400000),
-              y: [200, 400, 170, 330]
-            },
-            {
-              x: new Date(1538782200000),
-              y: [330, 340, 250, 280]
-            },
-            {
-              x: new Date(1538784000000),
-              y: [300, 330, 200, 320]
-            },
-            {
-              x: new Date(1538785800000),
-              y: [320, 450, 280, 350]
-            },
-            {
-              x: new Date(1538787600000),
-              y: [300, 350, 80, 250]
-            },
-            {
-              x: new Date(1538789400000),
-              y: [200, 330, 170, 300]
-            },
-            {
-              x: new Date(1538791200000),
-              y: [200, 220, 70, 130]
-            },
-            {
-              x: new Date(1538793000000),
-              y: [220, 270, 180, 250]
-            },
-            {
-              x: new Date(1538794800000),
-              y: [200, 250, 80, 100]
-            },
-            {
-              x: new Date(1538796600000),
-              y: [150, 170, 50, 120]
-            },
-            {
-              x: new Date(1538798400000),
-              y: [110, 450, 10, 420]
-            },
-            {
-              x: new Date(1538800200000),
-              y: [400, 480, 300, 320]
-            },
-            {
-              x: new Date(1538802000000),
-              y: [380, 480, 350, 450]
-            }
-          ]
-        }
-      ],
+      series: [{
+        data: [{
+          x: new Date(1538778600000),
+          y: [150, 170, 50, 100]
+        }, {
+          x: new Date(1538780400000),
+          y: [200, 400, 170, 330]
+        }, {
+          x: new Date(1538782200000),
+          y: [330, 340, 250, 280]
+        }, {
+          x: new Date(1538784000000),
+          y: [300, 330, 200, 320]
+        }, {
+          x: new Date(1538785800000),
+          y: [320, 450, 280, 350]
+        }, {
+          x: new Date(1538787600000),
+          y: [300, 350, 80, 250]
+        }, {
+          x: new Date(1538789400000),
+          y: [200, 330, 170, 300]
+        }, {
+          x: new Date(1538791200000),
+          y: [200, 220, 70, 130]
+        }, {
+          x: new Date(1538793000000),
+          y: [220, 270, 180, 250]
+        }, {
+          x: new Date(1538794800000),
+          y: [200, 250, 80, 100]
+        }, {
+          x: new Date(1538796600000),
+          y: [150, 170, 50, 120]
+        }, {
+          x: new Date(1538798400000),
+          y: [110, 450, 10, 420]
+        }, {
+          x: new Date(1538800200000),
+          y: [400, 480, 300, 320]
+        }, {
+          x: new Date(1538802000000),
+          y: [380, 480, 350, 450]
+        }]
+      }],
       xaxis: {
         type: 'datetime',
         axisBorder: {
@@ -674,14 +582,14 @@
         }
       }
     };
-  if (typeof candlestickEl !== undefined && candlestickEl !== null) {
-    const candlestickChart = new ApexCharts(candlestickEl, candlestickChartConfig);
+  if (_typeof(candlestickEl) !== undefined && candlestickEl !== null) {
+    var candlestickChart = new ApexCharts(candlestickEl, candlestickChartConfig);
     candlestickChart.render();
   }
 
   // Heat map chart
   // --------------------------------------------------------------------
-  const heatMapEl = document.querySelector('#heatMapChart'),
+  var heatMapEl = document.querySelector('#heatMapChart'),
     heatMapChartConfig = {
       chart: {
         height: 350,
@@ -695,46 +603,38 @@
       plotOptions: {
         heatmap: {
           enableShades: false,
-
           colorScale: {
-            ranges: [
-              {
-                from: 0,
-                to: 10,
-                name: '0-10',
-                color: '#b9b3f8'
-              },
-              {
-                from: 11,
-                to: 20,
-                name: '10-20',
-                color: '#aba4f6'
-              },
-              {
-                from: 21,
-                to: 30,
-                name: '20-30',
-                color: '#9d95f5'
-              },
-              {
-                from: 31,
-                to: 40,
-                name: '30-40',
-                color: '#8f85f3'
-              },
-              {
-                from: 41,
-                to: 50,
-                name: '40-50',
-                color: '#8176f2'
-              },
-              {
-                from: 51,
-                to: 60,
-                name: '50-60',
-                color: '#7367f0'
-              }
-            ]
+            ranges: [{
+              from: 0,
+              to: 10,
+              name: '0-10',
+              color: '#b9b3f8'
+            }, {
+              from: 11,
+              to: 20,
+              name: '10-20',
+              color: '#aba4f6'
+            }, {
+              from: 21,
+              to: 30,
+              name: '20-30',
+              color: '#9d95f5'
+            }, {
+              from: 31,
+              to: 40,
+              name: '30-40',
+              color: '#8f85f3'
+            }, {
+              from: 41,
+              to: 50,
+              name: '40-50',
+              color: '#8176f2'
+            }, {
+              from: 51,
+              to: 60,
+              name: '50-60',
+              color: '#7367f0'
+            }]
           }
         }
       },
@@ -766,57 +666,49 @@
         lineCap: 'round',
         colors: [cardColor]
       },
-      series: [
-        {
-          name: 'SUN',
-          data: generateDataHeat(24, {
-            min: 0,
-            max: 60
-          })
-        },
-        {
-          name: 'MON',
-          data: generateDataHeat(24, {
-            min: 0,
-            max: 60
-          })
-        },
-        {
-          name: 'TUE',
-          data: generateDataHeat(24, {
-            min: 0,
-            max: 60
-          })
-        },
-        {
-          name: 'WED',
-          data: generateDataHeat(24, {
-            min: 0,
-            max: 60
-          })
-        },
-        {
-          name: 'THU',
-          data: generateDataHeat(24, {
-            min: 0,
-            max: 60
-          })
-        },
-        {
-          name: 'FRI',
-          data: generateDataHeat(24, {
-            min: 0,
-            max: 60
-          })
-        },
-        {
-          name: 'SAT',
-          data: generateDataHeat(24, {
-            min: 0,
-            max: 60
-          })
-        }
-      ],
+      series: [{
+        name: 'SUN',
+        data: generateDataHeat(24, {
+          min: 0,
+          max: 60
+        })
+      }, {
+        name: 'MON',
+        data: generateDataHeat(24, {
+          min: 0,
+          max: 60
+        })
+      }, {
+        name: 'TUE',
+        data: generateDataHeat(24, {
+          min: 0,
+          max: 60
+        })
+      }, {
+        name: 'WED',
+        data: generateDataHeat(24, {
+          min: 0,
+          max: 60
+        })
+      }, {
+        name: 'THU',
+        data: generateDataHeat(24, {
+          min: 0,
+          max: 60
+        })
+      }, {
+        name: 'FRI',
+        data: generateDataHeat(24, {
+          min: 0,
+          max: 60
+        })
+      }, {
+        name: 'SAT',
+        data: generateDataHeat(24, {
+          min: 0,
+          max: 60
+        })
+      }],
       xaxis: {
         labels: {
           show: false,
@@ -841,14 +733,14 @@
         }
       }
     };
-  if (typeof heatMapEl !== undefined && heatMapEl !== null) {
-    const heatMapChart = new ApexCharts(heatMapEl, heatMapChartConfig);
+  if (_typeof(heatMapEl) !== undefined && heatMapEl !== null) {
+    var heatMapChart = new ApexCharts(heatMapEl, heatMapChartConfig);
     heatMapChart.render();
   }
 
   // Radial Bar Chart
   // --------------------------------------------------------------------
-  const radialBarChartEl = document.querySelector('#radialBarChart'),
+  var radialBarChartEl = document.querySelector('#radialBarChart'),
     radialBarChartConfig = {
       chart: {
         height: 380,
@@ -880,7 +772,7 @@
               fontSize: '1.125rem',
               color: headingColor,
               label: 'Comments',
-              formatter: function (w) {
+              formatter: function formatter(w) {
                 return '80%';
               }
             }
@@ -908,14 +800,14 @@
       series: [80, 50, 35],
       labels: ['Comments', 'Replies', 'Shares']
     };
-  if (typeof radialBarChartEl !== undefined && radialBarChartEl !== null) {
-    const radialChart = new ApexCharts(radialBarChartEl, radialBarChartConfig);
+  if (_typeof(radialBarChartEl) !== undefined && radialBarChartEl !== null) {
+    var radialChart = new ApexCharts(radialBarChartEl, radialBarChartConfig);
     radialChart.render();
   }
 
   // Radar Chart
   // --------------------------------------------------------------------
-  const radarChartEl = document.querySelector('#radarChart'),
+  var radarChartEl = document.querySelector('#radarChart'),
     radarChartConfig = {
       chart: {
         height: 350,
@@ -951,16 +843,13 @@
       yaxis: {
         show: false
       },
-      series: [
-        {
-          name: 'iPhone 12',
-          data: [41, 64, 81, 60, 42, 42, 33, 23]
-        },
-        {
-          name: 'Samsung s20',
-          data: [65, 46, 42, 25, 58, 63, 76, 43]
-        }
-      ],
+      series: [{
+        name: 'iPhone 12',
+        data: [41, 64, 81, 60, 42, 42, 33, 23]
+      }, {
+        name: 'Samsung s20',
+        data: [65, 46, 42, 25, 58, 63, 76, 43]
+      }],
       colors: [chartColors.donut.series4, chartColors.donut.series3],
       xaxis: {
         categories: ['Battery', 'Brand', 'Camera', 'Memory', 'Storage', 'Display', 'OS', 'Price'],
@@ -990,14 +879,14 @@
         }
       }
     };
-  if (typeof radarChartEl !== undefined && radarChartEl !== null) {
-    const radarChart = new ApexCharts(radarChartEl, radarChartConfig);
+  if (_typeof(radarChartEl) !== undefined && radarChartEl !== null) {
+    var radarChart = new ApexCharts(radarChartEl, radarChartConfig);
     radarChart.render();
   }
 
   // Donut Chart
   // --------------------------------------------------------------------
-  const donutChartEl = document.querySelector('#donutChart'),
+  var donutChartEl = document.querySelector('#donutChart'),
     donutChartConfig = {
       chart: {
         height: 390,
@@ -1006,26 +895,23 @@
       },
       labels: ['Operational', 'Networking', 'Hiring', 'R&D'],
       series: [42, 7, 25, 25],
-      colors: [
-        chartColors.donut.series1,
-        chartColors.donut.series3,
-        chartColors.donut.series4,
-        chartColors.donut.series5
-      ],
+      colors: [chartColors.donut.series1, chartColors.donut.series3, chartColors.donut.series4, chartColors.donut.series5],
       stroke: {
         show: false,
         curve: 'straight'
       },
       dataLabels: {
         enabled: true,
-        formatter: function (val, opt) {
+        formatter: function formatter(val, opt) {
           return parseInt(val, 10) + '%';
         }
       },
       legend: {
         show: true,
         position: 'bottom',
-        markers: { offsetX: -3 },
+        markers: {
+          offsetX: -3
+        },
         itemMargin: {
           vertical: 3,
           horizontal: 10
@@ -1046,7 +932,7 @@
               value: {
                 fontSize: '1.5rem',
                 color: legendColor,
-                formatter: function (val) {
+                formatter: function formatter(val) {
                   return parseInt(val, 10) + '%';
                 }
               },
@@ -1055,7 +941,7 @@
                 fontSize: '1.5rem',
                 color: headingColor,
                 label: 'Operational',
-                formatter: function (w) {
+                formatter: function formatter(w) {
                   return '42%';
                 }
               }
@@ -1063,81 +949,80 @@
           }
         }
       },
-      responsive: [
-        {
-          breakpoint: 992,
-          options: {
-            chart: {
-              height: 380
-            },
-            legend: {
-              position: 'bottom',
-              labels: {
-                colors: legendColor,
-                useSeriesColors: false
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 576,
-          options: {
-            chart: {
-              height: 320
-            },
-            plotOptions: {
-              pie: {
-                donut: {
-                  labels: {
-                    show: true,
-                    name: {
-                      fontSize: '1.5rem'
-                    },
-                    value: {
-                      fontSize: '1rem'
-                    },
-                    total: {
-                      fontSize: '1.5rem'
-                    }
-                  }
-                }
-              }
-            },
-            legend: {
-              position: 'bottom',
-              labels: {
-                colors: legendColor,
-                useSeriesColors: false
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 420,
-          options: {
-            chart: {
-              height: 280
-            },
-            legend: {
-              show: false
-            }
-          }
-        },
-        {
-          breakpoint: 360,
-          options: {
-            chart: {
-              height: 250
-            },
-            legend: {
-              show: false
+      responsive: [{
+        breakpoint: 992,
+        options: {
+          chart: {
+            height: 380
+          },
+          legend: {
+            position: 'bottom',
+            labels: {
+              colors: legendColor,
+              useSeriesColors: false
             }
           }
         }
-      ]
+      }, {
+        breakpoint: 576,
+        options: {
+          chart: {
+            height: 320
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  show: true,
+                  name: {
+                    fontSize: '1.5rem'
+                  },
+                  value: {
+                    fontSize: '1rem'
+                  },
+                  total: {
+                    fontSize: '1.5rem'
+                  }
+                }
+              }
+            }
+          },
+          legend: {
+            position: 'bottom',
+            labels: {
+              colors: legendColor,
+              useSeriesColors: false
+            }
+          }
+        }
+      }, {
+        breakpoint: 420,
+        options: {
+          chart: {
+            height: 280
+          },
+          legend: {
+            show: false
+          }
+        }
+      }, {
+        breakpoint: 360,
+        options: {
+          chart: {
+            height: 250
+          },
+          legend: {
+            show: false
+          }
+        }
+      }]
     };
-  if (typeof donutChartEl !== undefined && donutChartEl !== null) {
-    const donutChart = new ApexCharts(donutChartEl, donutChartConfig);
+  if (_typeof(donutChartEl) !== undefined && donutChartEl !== null) {
+    var donutChart = new ApexCharts(donutChartEl, donutChartConfig);
     donutChart.render();
   }
 })();
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
+});

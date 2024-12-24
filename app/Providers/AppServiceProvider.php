@@ -22,7 +22,10 @@ class AppServiceProvider extends ServiceProvider
   {
     $checkToken = Session::get('token');
 
-    $checkToken == null ? redirect()->back(): null;
+    // $checkToken === null ? redirect()->back(): null;
+    if(!$checkToken) {
+      redirect()->back();
+    }
 
   }
 }

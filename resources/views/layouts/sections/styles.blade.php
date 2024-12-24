@@ -2,8 +2,8 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-{{-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet"> --}}
-<link href="https://fonts.googleapis.com/css2?family=Doto:wght,ROND@900,100&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet">
+{{-- <link href="https://fonts.googleapis.com/css2?family=Doto:wght,ROND@900,100&display=swap" rel="stylesheet"> --}}
 
 <!-- Icons -->
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/fonts/materialdesignicons.css')) }}" />
@@ -26,9 +26,9 @@
 
 
 {{-- Custome --}}
-<link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/brutalism.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}"> --}}
 
 
 

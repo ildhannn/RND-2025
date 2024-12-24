@@ -7,19 +7,19 @@
 (function () {
   let cardColor, headingColor, labelColor, borderColor, legendColor;
 
-  // if (isDarkStyle) {
-  //   cardColor = config.colors_dark.cardColor;
-  //   headingColor = config.colors_dark.headingColor;
-  //   labelColor = config.colors_dark.textMuted;
-  //   legendColor = config.colors_dark.bodyColor;
-  //   borderColor = config.colors_dark.borderColor;
-  // } else {
-  cardColor = config.colors.cardColor;
-  headingColor = config.colors.headingColor;
-  labelColor = config.colors.textMuted;
-  legendColor = config.colors.bodyColor;
-  borderColor = config.colors.borderColor;
-  // }
+  if (isDarkStyle) {
+    cardColor = config.colors_dark.cardColor;
+    headingColor = config.colors_dark.headingColor;
+    labelColor = config.colors_dark.textMuted;
+    legendColor = config.colors_dark.bodyColor;
+    borderColor = config.colors_dark.borderColor;
+  } else {
+    cardColor = config.colors.cardColor;
+    headingColor = config.colors.headingColor;
+    labelColor = config.colors.textMuted;
+    legendColor = config.colors.bodyColor;
+    borderColor = config.colors.borderColor;
+  }
 
   // Color constant
   const chartColors = {

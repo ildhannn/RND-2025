@@ -26,9 +26,11 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Hari ini</a></li>
                         <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Kemarin</a></li>
-                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">1 Minggu Terakhir</a>
+                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">1 Minggu
+                                Terakhir</a>
                         </li>
-                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">1 Bulan Terakhir</a>
+                        <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">1 Bulan
+                                Terakhir</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -47,6 +49,10 @@
 
 @section('page-dashboard-script')
     <script>
+        let dataLogin = @json($res).login.length;
+        let dataUpdatePengguna = @json($res).update_pengguna.length;
+        let dataUpdateMenu = @json($res).update_menu.length;
+
         const horizontalBarChartEl = document.querySelector('#dahsboard'),
             horizontalBarChartConfig = {
                 chart: {
@@ -77,15 +83,19 @@
                         bottom: -12
                     }
                 },
-                colors: '#C2C2C2',
+                colors: '#c8102e',
                 dataLabels: {
                     enabled: false
                 },
                 series: [{
-                    data: [10, 5, 5, 2]
+                    data: [
+                      dataLogin,
+                      dataUpdatePengguna,
+                      dataUpdateMenu
+                    ]
                 }],
                 xaxis: {
-                    categories: ['Login', 'Update Pengguna', 'Update Pengaturan', 'Update Menu'],
+                    categories: ['Login', 'Update Pengguna', 'Update Menu'],
                     axisBorder: {
                         show: false
                     },

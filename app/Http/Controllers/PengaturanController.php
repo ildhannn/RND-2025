@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Spatie\Image\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -14,7 +15,7 @@ class PengaturanController extends Controller
 
         $res = requestGetAPI($url)->data[0];
 
-        return view('setting.index2', compact('res'));
+        return view('setting.index', compact('res'));
     }
 
     public function headerandFavico()
@@ -93,5 +94,71 @@ class PengaturanController extends Controller
             Alert::error('Error', $res->message);
             return redirect()->route('page-pengaturan');
         }
+    }
+
+    public function settingFR()
+    {
+        return view('setting.setting_fr');
+    }
+
+    public function getSetting()
+    {
+        $dataSetting = [];
+        $path = resource_path('settingFR/setting.json');
+        if (File::exists($path)) {
+            $dataSetting = json_decode(File::get($path), true);
+        } else {
+            Alert::error('Error', 'JSON tidak titemukan');
+        }
+
+        return response()->json($dataSetting);
+    }
+
+    public function postSettingFR(Request $request)
+    {
+        $dataSetting = [];
+        $request->validate([
+            'threshold' => 'required|string',
+            'prediction' => 'required|string',
+        ]);
+
+        $path = resource_path('settingFR/setting.json');
+
+        if (File::exists($path)) {
+            $dataSetting = json_decode(File::get($path), true);
+        } else {
+            Alert::error('Error', 'JSON tidak titemukan');
+        }
+
+        // for create
+        // $nextId = 1;
+        // if (!empty($dataSetting)) {
+        //     $ids = array_column($dataSetting, 'id');
+        //     $nextId = max($ids) + 1;
+        // }
+
+        // $data = [
+        //     'id' => 1,
+        //     'threshold' => $request->input('threshold'),
+        //     'prediction' => $request->input('prediction'),
+        // ];
+
+        // $dataSetting[] = $data;
+        // end for create
+
+
+        $index = array_search(1, array_column($dataSetting, 'id'));
+        if ($index !== false) {
+            $dataSetting[$index]['threshold'] = $request->input('threshold');
+            $dataSetting[$index]['prediction'] = $request->input('prediction');
+
+            File::put($path, json_encode($dataSetting, JSON_PRETTY_PRINT));
+            Alert::success('Success', 'Pengaturan FR Telah Tersimpan');
+            return redirect()->back()->with('success', 'Pengaturan Telah Tersimpan');
+        } else {
+            return response()->json(['message' => 'Object not found.'], 404);
+        }
+
+        // File::put($path, json_encode($dataSetting, JSON_PRETTY_PRINT));
     }
 }

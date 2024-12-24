@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// old but usefull
+// Route::get('/registrasi_fr/{id}', [App\Http\Controllers\AuthController::class, 'registFR2'])->name('page-regis-fr');
+
+
 // Main Page Route
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('page-login');
 Route::post('/login-post', [App\Http\Controllers\AuthController::class, 'login'])->name('post-login');
@@ -23,8 +27,7 @@ Route::middleware([Cek_login::class])->group(function () {
 
     // Face Recognation
     Route::get('/face_recognition', [App\Http\Controllers\AuthController::class, 'faceRecognition'])->name('page-fr');
-    Route::get('/registrasi_fr2', [App\Http\Controllers\AuthController::class, 'registFR'])->name('page-regis-fr2');
-    Route::get('/registrasi_fr/{id}', [App\Http\Controllers\AuthController::class, 'registFR2'])->name('page-regis-fr');
+    Route::get('/userFR/{id}', [App\Http\Controllers\AuthController::class, 'registFR2'])->name('page-regis-fr2');
     Route::get('/get-fr/{id}', [App\Http\Controllers\AuthController::class, 'getFR'])->name('get-fr');
 
     Route::post('/registrasi_fr/{id}', [App\Http\Controllers\AuthController::class, 'postRegis'])->name('post-regis-fr');
@@ -50,6 +53,7 @@ Route::middleware([Cek_login::class])->group(function () {
     Route::get('/tambah_menu', [App\Http\Controllers\MenuController::class, 'createMenu'])->name('create-menu');
     Route::get('/edit_menu/{id}', [App\Http\Controllers\MenuController::class, 'editMenu'])->name('edit-menu');
     Route::get('/getmenu', [App\Http\Controllers\MenuController::class, 'getMenuUser'])->name('get-menu');
+    Route::get('/get_parent_menu', [App\Http\Controllers\MenuController::class, 'getParent'])->name('get-parent-menu');
 
     Route::post('/menu_create-post', [App\Http\Controllers\MenuController::class, 'postCreate'])->name('post-create-menu');
     Route::post('/menu_edit-post/{id}', [App\Http\Controllers\MenuController::class, 'postEdit'])->name('post-edit-menu');
@@ -57,9 +61,11 @@ Route::middleware([Cek_login::class])->group(function () {
 
     // Pengaturan
     Route::get('/pengaturan', [App\Http\Controllers\PengaturanController::class, 'index'])->name('page-pengaturan');
+    Route::get('/pengaturan_fr', [App\Http\Controllers\PengaturanController::class, 'settingFR'])->name('page-pengaturan-fr');
+    Route::get('/setting_fr', [App\Http\Controllers\PengaturanController::class, 'getSetting'])->name('get-setting-fr');
     Route::get('/fetch-logo_header-favico', [App\Http\Controllers\PengaturanController::class, 'headerandFavico'])->name('fetch-logo_headerFavaico');
-
     Route::post('/pengaturan_post', [App\Http\Controllers\PengaturanController::class, 'updatePengaturan'])->name('post-edit-pengaturan');
+    Route::post('/pengaturan_fr_post', [App\Http\Controllers\PengaturanController::class, 'postSettingFR'])->name('post-pengaturan-fr');
 
     Route::get('/sandbox', [App\Http\Controllers\SandboxController::class, 'index'])->name('page-sandbox');
 });

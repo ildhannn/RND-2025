@@ -31,43 +31,14 @@ class MenuController extends Controller
             Alert::success('Error', $res->message);
         }
 
-        return view('menu.index2', compact('menu'));
-    }
-
-    public function createMenu()
-    {
-        return view('menu.create');
-    }
-
-    public function postCreate(Request $request)
-    {
-        $url = api_url('createMenu');
-
-        $post = [
-            'nama' => $request->nama,
-            'slug' => $request->slug,
-            'url' => $request->url,
-            'icon' => $request->icon,
-            'status' => '1',
-            'kewenangan_id' => $request->kewenangan_id,
-            'kategori' => $request->kategori,
-        ];
-
-        $res = requestPostAPI($url, $post);
-
-        if ($res->status === 200) {
-            Alert::success('Success', $res->message);
-            return redirect()->route('page-menu');
-        } else {
-            Alert::error('Error', $res->message);
-            return redirect()->route('page-menu');
-        }
+        return view('menu.index', compact('menu'));
     }
 
     public function editMenu($id)
     {
         $url = api_url('getMenuId/' . $id);
         $url_kewenangan = api_url('getAllKewenangan');
+        $url_parentMenu = api_url('getParentMenu');
 
         $post = [
             'id' => $id,
@@ -75,8 +46,9 @@ class MenuController extends Controller
 
         $res = requestPostAPI($url, $post)->data;
         $kewenangan = requestGetAPI($url_kewenangan)->data;
+        $parentMenu = requestGetAPI($url_parentMenu)->data;
 
-        return view('menu.edit', compact('id', 'res', 'kewenangan'));
+        return view('menu.edit', compact('id', 'res', 'kewenangan', 'parentMenu'));
     }
 
     public function postEdit(Request $request, $id)
@@ -91,14 +63,51 @@ class MenuController extends Controller
             'status' => $request->status,
             'kewenangan_id' => $request->kewenangan_id,
             'kategori' => $request->kategori,
+            'parent_id' => $request->parent_id,
         ];
 
         $res = requestPostAPI($url, $post);
 
         if ($res->status === 200) {
+
             $getMenu = app(MenuController::class);
             $getMenu->getMenuUser();
+
             Alert::success('Success', 'Menu berhasil diupdate');
+            return redirect()->route('page-menu');
+        } else {
+            Alert::error('Error', $res->message);
+            return redirect()->route('page-menu');
+        }
+    }
+
+    public function createMenu()
+    {
+        $url_parentMenu = api_url('getParentMenu');
+        $parentMenu = requestGetAPI($url_parentMenu)->data;
+
+        return view('menu.create', compact('parentMenu'));
+    }
+
+    public function postCreate(Request $request)
+    {
+        $url = api_url('createMenu');
+
+        $post = [
+            'nama' => $request->nama,
+            'slug' => $request->slug,
+            'url' => $request->url,
+            'icon' => $request->icon,
+            'status' => '1',
+            'kewenangan_id' => $request->kewenangan_id,
+            'kategori' => $request->kategori,
+            'parent_id' => $request->parent_id,
+        ];
+
+        $res = requestPostAPI($url, $post);
+
+        if ($res->status === 200) {
+            Alert::success('Success', $res->message);
             return redirect()->route('page-menu');
         } else {
             Alert::error('Error', $res->message);

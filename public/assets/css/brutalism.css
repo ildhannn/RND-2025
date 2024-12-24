@@ -1,124 +1,120 @@
 /* start btn */
-*{
-font-family: 'Doto';
+* {
+  font-family: 'Doto';
 }
 
 .btn-brutal-primary {
-border: 2px dotted #626262;
-border-radius: 5px;
-justify-content: center;
-transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-text-decoration: none;
-text-align: center;
-vertical-align: middle;
-background-color: transparent;
-display: inline-block;
-padding: 3px;
+  background-color: #c7c6ca;
+  border-radius: 5px;
+  justify-content: center;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  background-color: transparent;
+  display: inline-block;
+  padding: 3px;
 }
 
 .btn-brutal-secondary {
-background-color: #4c4c4c;
-border: 2px dotted #626262;
-border-radius: 5px;
-justify-content: center;
-transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-text-decoration: none;
-text-align: center;
-vertical-align: middle;
-display: inline-block;
-padding: 3px;
+  background-color: #c7c6ca;
+  border-radius: 5px;
+  justify-content: center;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 3px;
 }
 
 .btn-brutal-danger {
-background-color: #4c4c4c;
-border: 2px dotted #626262;
-border-radius: 5px;
-justify-content: center;
-transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-text-decoration: none;
-text-align: center;
-vertical-align: middle;
-display: inline-block;
-padding: 3px;
+  background-color: #c8102e;
+  border-radius: 5px;
+  justify-content: center;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 3px;
 }
 
-.btn-brutal-primary:hover, .btn-brutal-secondary:hover, .btn-brutal-danger:hover {
-color: black !important;
-background-color: #d7d7d7 !important;
+.btn-brutal-primary:hover,
+.btn-brutal-secondary:hover,
+.btn-brutal-danger:hover {
+  color: #222222 !important;
+  background-color: #d7d7d7 !important;
 }
 
 .brutal-header {
-background-color: black;
-color: white;
-letter-spacing: 5px;
-width: 100%;
-margin-bottom: 10px;
-padding: 15px 0px 0px 15px;
-font-size: 100px;
-letter-spacing: 10px;
-overflow: hidden;
+  background-color: #222222;
+  color: white;
+  letter-spacing: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px 0px 0px 15px;
+  font-size: 100px;
+  letter-spacing: 10px;
+  overflow: hidden;
 }
 
 .brutal-header p {
-margin: 0;
-width: 100%;
-word-wrap: break-word;
+  margin: 0;
+  width: 100%;
+  word-wrap: break-word;
 }
 /* end btn */
 
-
-
 /* start card */
 .brutal-circle-card {
-color: white;
-background-color: black;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-width: 80px;
-height: 80px;
-font-size: 35px;
+  color: white;
+  background-color: #c8102e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  font-size: 35px;
 }
 
 .brutal-card-main {
-border: 2px solid #CFCFCF;
-/* border-radius: 5px; */
-padding: 20px;
+  border: 2px solid #cfcfcf;
+  /* border-radius: 5px; */
+  padding: 20px;
 }
 /* end card */
 
-
 /* miscellaneous */
 .brutal-badge {
-border: 2px dotted #626262;
-justify-content: center;
-text-align: center;
-vertical-align: middle;
-padding: 2px 10px 2px 10px;
-background-color: transparent;
+  border: 2px dotted #626262;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px 10px 2px 10px;
+  background-color: transparent;
 }
 
 .brutal-label-success {
-background-color: transparent;
-color: black;
+  background-color: transparent;
+  color: #222222;
 }
 
 .brutal-label-danger {
-background-color: #CFCFCF;
-color: black;
+  background-color: #cfcfcf;
+  color: #222222;
 }
 /* end miscellaneous */
 
-
 /* input */
 .brutal-input {
-border: 2px dotted #a2a2a2;
-display: block;
-height: 30px;
+  border: 2px dotted #a2a2a2;
+  display: block;
+  height: 30px;
 }
 
 .brutal-input:focus {
-outline: none;
+  outline: none;
 }
 /* end input */

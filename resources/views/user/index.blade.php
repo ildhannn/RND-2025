@@ -119,12 +119,15 @@
                                 </td>
                                 <td width="10%">
                                     @if ($item->face_id === null)
-                                        <a href="/registrasi_fr/{{ $item->id }}" class="btn btn-sm btn-primary"><i class="mdi mdi-face-recognition"></i>&nbsp;Registrasi FR</a>
+                                        <a href="/userFR/{{ $item->id }}" class="btn btn-sm btn-primary"><i
+                                                class="mdi mdi-face-recognition"></i>&nbsp;Registrasi FR</a>
                                     @endif
-                                    <a href="/edit_user/{{ $item->id }}" class="btn btn-sm btn-primary"><i class="mdi mdi-account-edit"></i>&nbsp;Edit</a>
+                                    <a href="/edit_user/{{ $item->id }}" class="btn btn-sm btn-primary"><i
+                                            class="mdi mdi-account-edit"></i>&nbsp;Edit</a>
                                     <form action="/hapus_user/{{ $item->id }}" method="POST" class="d-inline">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-danger" id="hapus_user"><i class="mdi mdi-delete-circle-outline"></i>&nbsp;Hapus</button>
+                                        <button type="submit" class="btn btn-sm btn-danger" id="hapus_user"><i
+                                                class="mdi mdi-delete-circle-outline"></i>&nbsp;Hapus</button>
                                     </form>
                                 </td>
                             </tr>

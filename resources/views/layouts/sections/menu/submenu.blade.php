@@ -32,7 +32,7 @@
           @if (isset($submenu->icon))
           <i class="{{ $submenu->icon }}"></i>
           @endif
-          <div>{{ isset($submenu->name) ? __($submenu->name) : '' }}</div>
+          <div>{{ isset($submenu->nama) ? __($submenu->nama) : '' }}</div>
           @isset($submenu->badge)
             <div class="badge bg-{{ $submenu->badge[0] }} rounded-pill ms-auto">{{ $submenu->badge[1] }}</div>
           @endisset
